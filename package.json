@@ -1,0 +1,107 @@
+{
+  "name": "UITACHI",
+  "displayName": "Custom UI Welcome",
+  "description": "A local-only, premium Apple-inspired Welcome screen for VS Code. Network-free, privacy-first.",
+  "version": "0.1.0",
+  "publisher": "KRISH",
+ "icon": "media/icons/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:customUI.open"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "customUI.open",
+        "title": "Custom UI: Open",
+        "category": "Custom UI"
+      }
+    ],
+    "configuration": {
+      "title": "Custom UI",
+      "properties": {
+        "customUI.backgroundImagePath": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "Absolute path to a local background image (PNG, JPG, or WebP). Never a URL."
+        },
+        "customUI.backgroundOpacity": {
+          "type": "number",
+          "default": 100,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Background image opacity (0-100)."
+        },
+        "customUI.backgroundBlur": {
+          "type": "number",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 40,
+          "description": "Background blur in pixels (0-40)."
+        },
+        "customUI.backgroundBrightness": {
+          "type": "number",
+          "default": 100,
+          "minimum": 40,
+          "maximum": 160,
+          "description": "Background brightness percentage (40-160)."
+        },
+        "customUI.backgroundContrast": {
+          "type": "number",
+          "default": 100,
+          "minimum": 40,
+          "maximum": 160,
+          "description": "Background contrast percentage (40-160)."
+        },
+        "customUI.overlayOpacity": {
+          "type": "number",
+          "default": 35,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Dark overlay opacity over the background (0-100)."
+        },
+        "customUI.backgroundPosition": {
+          "type": "string",
+          "default": "center",
+          "enum": [
+            "center",
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "description": "Background image position."
+        },
+        "customUI.backgroundFit": {
+          "type": "string",
+          "default": "cover",
+          "enum": [
+            "cover",
+            "contain"
+          ],
+          "description": "Background image fit."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./test/extension.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
